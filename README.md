@@ -41,7 +41,7 @@
 - Run git clone https://github.com/ngneat/nx-serverless.git your-app-name
 - Run `npm install`
 - Run `npm run localstack`
-- Update the `environment` files based on your configuration.
+- Update the `environment` files based on your configuration
 - Run `npm run serve`
 
 ## About the App
@@ -80,7 +80,7 @@ The todos service is responsible for managing todos. A user has many todos. It e
 // Get user todos
 curl 'http://localhost:3005/dev/todos' --header 'Authorization: token TOKEN'
 
-// Get single todo
+// Get a single todo
 curl 'http://localhost:3005/dev/todos/:id' --header 'Authorization: token TOKEN'
 
 // Create a todo
@@ -91,7 +91,7 @@ curl --request POST 'http://localhost:3005/dev/todos' \
 }'
 
 // Update a todo
-curl  --request PUT 'http://localhost:3005/dev/todos/01G2HGJADWKDPKWHJAVZJ1QP9S' \
+curl  --request PUT 'http://localhost:3005/dev/todos/:id' \
 --header 'Authorization: token TOKEN' \
 --data-raw '{
     "completed": true
@@ -137,7 +137,7 @@ npx nx workspace-generator model --name=tag --project=tags
 
 - Visit [Serverless Documentation](https://www.serverless.com/framework/docs/) to learn more about Serverless framework
 - Visit [Nx Documentation](https://nx.dev) to learn more about Nx dev toolkit
-
+- Visit [LocalStack](https://localstack.cloud/) to learn more about it
 ## Contribution
 
 Found an issue? feel free to raise an issue with information to reproduce.
