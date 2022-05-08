@@ -1,0 +1,22 @@
+import lambdaEventMock from 'lambda-event-mock';
+import { Context } from 'aws-lambda';
+import { main } from './<%= name %>-handler';
+
+describe('<%= name %>', () => {
+
+  it('should do something useful', async () => {
+    
+    const event = lambdaEventMock.apiGateway()
+      .path('/todos')
+      .queryStringParameters({
+        searchTerm: 'foo',
+      })
+      .method('GET')
+      .build();
+
+    const { body } = await main(event, {} as Context);
+
+    expect(JSON.parse(body).data.searchTerm).toEqual('foo')
+  })
+
+});

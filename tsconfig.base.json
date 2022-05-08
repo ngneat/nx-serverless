@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "importHelpers": false,
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["esnext"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/auth/*": ["libs/auth/src/lib/*"],
+      "@app/db/*": ["libs/db/src/lib/*"],
+      "@app/env": ["environments/environment.ts"],
+      "@app/http/*": ["libs/http/src/lib/*"],
+      "@app/users/*": ["services/users/src/*"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

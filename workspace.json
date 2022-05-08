@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "projects": {
+    "auth": "services/auth",
+    "core": "services/core",
+    "db": "libs/db",
+    "http": "libs/http",
+    "todos": "services/todos",
+    "users": "services/users"
+  }
+}

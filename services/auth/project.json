@@ -1,0 +1,61 @@
+{
+  "root": "services/auth",
+  "projectType": "application",
+  "sourceRoot": "services/auth/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/auth",
+        "color": true,
+        "command": "sls package"
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/auth",
+        "color": true,
+        "command": "sls offline start"
+      }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/auth",
+        "color": true,
+        "command": "sls deploy --verbose"
+      },
+      "dependsOn": [
+        {
+          "target": "deploy",
+          "projects": "dependencies"
+        }
+      ]
+    },
+    "remove": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/auth",
+        "color": true,
+        "command": "sls remove"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["services/auth/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/services/auth"],
+      "options": {
+        "jestConfig": "services/auth/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["service"],
+  "implicitDependencies": ["core"]
+}

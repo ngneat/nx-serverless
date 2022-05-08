@@ -1,0 +1,61 @@
+{
+  "root": "services/todos",
+  "projectType": "application",
+  "sourceRoot": "services/todos/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/todos",
+        "color": true,
+        "command": "sls package"
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/todos",
+        "color": true,
+        "command": "sls offline start"
+      }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/todos",
+        "color": true,
+        "command": "sls deploy --verbose"
+      },
+      "dependsOn": [
+        {
+          "target": "deploy",
+          "projects": "dependencies"
+        }
+      ]
+    },
+    "remove": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/todos",
+        "color": true,
+        "command": "sls remove"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["services/todos/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/services/todos"],
+      "options": {
+        "jestConfig": "services/todos/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["service"],
+  "implicitDependencies": ["core"]
+}

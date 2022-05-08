@@ -1,0 +1,24 @@
+{
+  "root": "services/core",
+  "projectType": "application",
+  "sourceRoot": "services/core/src",
+  "targets": {
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/core",
+        "color": true,
+        "command": "sls deploy --verbose"
+      }
+    },
+    "remove": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/core",
+        "color": true,
+        "command": "sls remove"
+      }
+    }
+  },
+  "tags": ["services"]
+}

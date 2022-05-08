@@ -1,0 +1,61 @@
+import {
+  createItem,
+  query,
+  updateItem,
+  getItem,
+} from '@app/db/operations';
+import { Item, ItemKeys } from '@app/db/item';
+import { DynamoDB } from 'aws-sdk';
+
+export interface <%= className %>Model {
+  id: string;
+}
+
+export class <%= className %>Keys extends ItemKeys {
+  static ENTITY_TYPE = '<%= constantName %>';
+
+  constructor(private id: string) {
+    super();
+  }
+
+  get pk() {
+    return `${<%= className %>Keys.ENTITY_TYPE}#${this.id}`;
+  }
+
+  get sk() {
+    return this.pk;
+  }
+}
+
+export class <%= className %> extends Item<<%= className %>Model> {
+  constructor(public <%= propertyName %>: <%= className %>Model) {
+    super();
+  }
+
+  get keys() {
+    return new <%= className %>Keys(this.<%= propertyName %>.id);
+  }
+
+  static fromItem(attributeMap: DynamoDB.AttributeMap): <%= className %>Model {
+    return {
+      id: attributeMap.id.S
+    };
+  }
+
+  toItem() {
+    return this.marshall(this.<%= propertyName %>);
+  }
+}
+
+
+export async function create<%= className %>(<%= propertyName %>: <%= className %>): Promise<<%= className %>Model> {
+  await createItem(<%= propertyName %>);
+
+  return <%= className %>.fromItem(<%= propertyName %>.toItem());
+}
+
+export async function get<%= className %>(<%= propertyName %>Keys: <%= className %>Keys) {
+  const result = await getItem(<%= propertyName %>Keys);
+
+  return <%= className %>.fromItem(result.Item);
+}

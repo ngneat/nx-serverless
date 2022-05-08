@@ -1,0 +1,30 @@
+import type { Serverless } from 'serverless/aws';
+import { baseServerlessConfig } from '../../serverless.base';
+
+const serverlessConfig = <Serverless>{
+  ...baseServerlessConfig,
+  service: '<%= name %>',
+  custom: {
+    ...baseServerlessConfig.custom,
+    'serverless-offline': {
+      lambdaPort: 3005,
+      httpPort: 3006,
+    },
+  },
+  functions: {
+    'get-<%= fileName %>': {
+      handler: 'src/get-<%= fileName %>/get-<%= fileName %>-handler.main',
+      events: [
+        {
+          http: {
+            method: 'get',
+            path: '<%= name %>',
+          },
+        },
+      ],
+    },
+  },
+}
+
+module.exports = serverlessConfig;
+

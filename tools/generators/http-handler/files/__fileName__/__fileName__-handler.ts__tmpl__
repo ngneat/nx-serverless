@@ -1,0 +1,12 @@
+import type { QueryParams } from '@app/http/types';
+import { createProtectedHandler } from '@app/http/handlers';
+import { httpResponse } from '@app/http/response';
+
+type Params = QueryParams<{ searchTerm: string }>;
+
+export const main = createProtectedHandler<Params>(async (event) => {
+
+  return httpResponse({
+    searchTerm: event.queryStringParameters?.searchTerm,
+  })
+});

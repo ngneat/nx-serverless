@@ -1,0 +1,9 @@
+import { main } from './<%= name %>-handler';
+
+describe('<%= name %>', () => {
+
+  it('should do something useful', async () => {
+    expect(main).toBe(true);
+  })
+
+});

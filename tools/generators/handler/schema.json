@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "handler",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Handler name"
+    },
+    "project": {
+      "type": "string",
+      "description": "Project name",
+      "$default": {
+        "$source": "projectName"
+      }
+    }
+  },
+  "required": ["name", "project"]
+}
