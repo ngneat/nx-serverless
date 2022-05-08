@@ -98,6 +98,13 @@ curl  --request PUT 'http://localhost:3005/dev/todos/:id' \
 }'
 ```
 
+## DynamoDB GUI
+[Download](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html) NoSQL Workbench for DynamoDB and connect to `http://localhost:4566`.
+
+<p align="center">
+ <img width="100%" height="100%" src="./dynamo.png">
+</p>
+
 ## Commands
 
 ```bash
