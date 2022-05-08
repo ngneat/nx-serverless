@@ -72,7 +72,7 @@ curl 'http://localhost:3003/dev/user' --header 'Authorization: token TOKEN'
 
 The request returns the logged-in user.
 
-#### Todos service:
+#### Todos Service:
 
 The todos service is responsible for managing todos. A user has many todos. It exposes CRUD routes:
 
