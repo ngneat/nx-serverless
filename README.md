@@ -140,6 +140,8 @@ npx nx workspace-generator http-handler --name=create-tag --project=tags
 npx nx workspace-generator model --name=tag --project=tags
 ```
 
+<img src="demo.gif">
+
 ## Further help
 
 - Visit [Serverless Documentation](https://www.serverless.com/framework/docs/) to learn more about Serverless framework
