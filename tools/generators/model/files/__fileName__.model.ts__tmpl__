@@ -1,7 +1,5 @@
 import {
   createItem,
-  query,
-  updateItem,
   getItem,
 } from '@app/db/operations';
 import { Item, ItemKeys } from '@app/db/item';

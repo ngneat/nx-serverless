@@ -14,7 +14,7 @@ describe('<%= name %>', () => {
       .method('GET')
       .build();
 
-    const { body } = await main(event, {} as Context);
+    const { body } = await main(event, {} as any);
 
     expect(JSON.parse(body).data.searchTerm).toEqual('foo')
   })
