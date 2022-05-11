@@ -10,7 +10,7 @@
 ✅ &nbsp;First-Class Typescript Support<br>
 ✅ &nbsp;DynamoDB Single Table Design<br>
 ✅ &nbsp;Shared API Gateway<br>
-✅ &nbsp;Enviroments Configuration<br>
+✅ &nbsp;Environments Configuration<br>
 ✅ &nbsp;JWT Auth Middleware<br>
 ✅ &nbsp;Http Params Validation<br>
 ✅ &nbsp;Typed Proxy Handlers<br>
