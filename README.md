@@ -11,6 +11,7 @@
 ✅ &nbsp;DynamoDB Single Table Design<br>
 ✅ &nbsp;Shared API Gateway<br>
 ✅ &nbsp;Environments Configuration<br>
+✅ &nbsp;CORS<br>
 ✅ &nbsp;JWT Auth Middleware<br>
 ✅ &nbsp;Http Params Validation<br>
 ✅ &nbsp;Typed Proxy Handlers<br>
