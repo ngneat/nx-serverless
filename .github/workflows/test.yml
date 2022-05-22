@@ -1,11 +1,29 @@
-name: Test
+name: Lint,Test,Deploy
 
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
-  build:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Node setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+
+  test:
+    needs: lint
     runs-on: ubuntu-latest
 
     steps:
@@ -19,4 +37,24 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run test
-      
+
+  deploy:
+    needs:
+    - test
+    - lint
+    runs-on: ubuntu-latest
+    if: ${{ github.event.name == 'push'}}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Node setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run deploy 
+
+
