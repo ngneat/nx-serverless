@@ -40,8 +40,8 @@ jobs:
 
   deploy:
     needs:
-    - test
-    - lint
+      - test
+      - lint
     runs-on: ubuntu-latest
     if: ${{ github.event.name == 'push'}}
 
