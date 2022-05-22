@@ -13,7 +13,10 @@
     "affected": "nx affected",
     "format": "nx format:write",
     "update": "nx migrate latest",
-    "workspace-generator": "nx workspace-generator"
+    "workspace-generator": "nx workspace-generator",
+    "test:affected": "nx affected --target=test",
+    "deploy:affected": "nx affected --target=deploy",
+    "lint:affected": "nx affected --target=lint"
   },
   "dependencies": {
     "@aws-sdk/util-dynamodb": "3.80.0",

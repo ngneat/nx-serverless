@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  lint:
+  lint_test_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,42 +19,15 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
-      - run: npm ci
-      - run: npm run lint
+      - name: install dependencies
+        run: npm ci
 
-  test:
-    needs: lint
-    runs-on: ubuntu-latest
+      - name: lint
+        run: npm run lint:affected
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: test
+        run:  npm run test:affected
 
-      - name: Node setup
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run test
-
-  deploy:
-    needs:
-      - test
-      - lint
-    runs-on: ubuntu-latest
-    if: ${{ github.event.name == 'push'}}
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Node setup
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run deploy 
-
-
+      - name: deploy
+        if: ${{ github.event.name == 'push'}}
+        run:  npm run deploy:affected
