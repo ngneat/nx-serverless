@@ -5,7 +5,7 @@ console.log(`-------------- USING ENV: ${env.name} ----------------`);
 
 export const baseServerlessConfigProvider: Serverless['provider'] = {
   name: 'aws',
-  runtime: 'nodejs14.x',
+  runtime: 'nodejs16.x',
   memorySize: 128,
   profile: env.profile,
   stage: env.name,
@@ -27,9 +27,9 @@ export const baseServerlessConfig: Partial<Serverless> = {
   custom: {
     esbuild: {
       bundle: true,
-      minify: env.name === 'prod',
-      target: ['node14', 'es2020'],
-      sourcemap: true,
+      minify: env.name !== 'dev',
+      target: ['es2020'],
+      sourcemap: env.name !== 'dev',
       sourcesContent: false,
       plugins: '../../plugins.js',
       define: { 'require.resolve': undefined },
