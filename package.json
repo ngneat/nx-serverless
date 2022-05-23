@@ -16,7 +16,7 @@
     "workspace-generator": "nx workspace-generator",
     "test:affected": "nx affected --target=test",
     "deploy:affected": "nx affected --target=deploy",
-    "lint:affected": "nx affected --target=lint"
+    "lint:affected": "nx affected:lint"
   },
   "dependencies": {
     "@aws-sdk/util-dynamodb": "3.80.0",

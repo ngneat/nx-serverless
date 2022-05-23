@@ -29,13 +29,13 @@ jobs:
         run:  npm run test:affected
 
       - name: deploy to staging
-        if: contains(github.ref, "stg")
+        if: contains(github.ref, 'stg')
         env:
           NODE_ENV: stg
         run:  npm run deploy:affected
 
       - name: deploy to prod
-        if: contains(github.ref, "prod")
+        if: contains(github.ref, 'prod')
         env:
           NODE_ENV: prod
         run:  npm run deploy:affected  
@@ -46,3 +46,4 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
+
