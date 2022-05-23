@@ -29,13 +29,13 @@ jobs:
         run:  npm run test:affected
 
       - name: deploy to staging
-        if: contains(github.ref, "stg")
+        if: contains(github.ref, 'stg')
         env:
           NODE_ENV: stg
         run:  npm run deploy:affected
 
       - name: deploy to prod
-        if: contains(github.ref, "prod")
+        if: contains(github.ref, 'prod')
         env:
           NODE_ENV: prod
         run:  npm run deploy:affected  
