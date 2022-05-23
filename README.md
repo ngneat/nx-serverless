@@ -143,6 +143,27 @@ npx nx workspace-generator model --name=tag --project=tags
 
 <img src="demo.gif">
 
+## CI/CD pipeline with github actions
+### Github actions? 
+GitHub Actions makes it easy to automate all your software workflows. Build, test, and deploy your code right from GitHub. Make code reviews, branch management,and run workflows when other events happen in your repository
+
+### Getting started with github actions
+
+[https://docs.github.com/actions](https://docs.github.com/actions)
+
+The pipeline has been configured to run everytime a push/pull_request is made to the main branch
+
+### Steps
+- Checkout: The `checkout` action is used to checkout the source code.
+
+- Node setup: The `setup-node` action is used to optionally download and cache distribution of the requested Node.js version.
+
+- lint and test: The `lint` and `test` runs only on affected projects.
+
+- Configure AWS credentials: The `configure-aws-credentials` Configure AWS credential and region environment variables for use in github Actions.
+
+- Deploy to staging/prod: The `staging` and `prod` runs only when the branch name is prefixed with the name of the environment and deploy to the right environment.
+
 ## Further help
 
 - Visit [Serverless Documentation](https://www.serverless.com/framework/docs/) to learn more about Serverless framework
