@@ -160,7 +160,7 @@ The pipeline has been configured to run everytime a push/pull_request is made to
 
 - lint and test: The `lint` and `test` runs only on affected projects.
 
-- Configure AWS credentials: The `configure-aws-credentials` Configure AWS credential and region environment variables for use in github Actions.
+- Configure AWS credentials: The `configure-aws-credentials` Configure AWS credential and region environment variables for use in github Actions. The credentials needed are AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
 
 - Deploy to staging/prod: The `staging` and `prod` runs only when the branch name is prefixed with the name of the environment and deploy to the right environment.
 
