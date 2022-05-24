@@ -15,7 +15,7 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "test:affected": "nx affected:test --base=origin/main --head=HEAD",
-    "deploy:affected": "nx affected:deploy --base=origin/main --head=HEAD",
+    "deploy:affected": "nx affected --target=deploy --all",
     "lint:affected": "nx affected:lint --base=origin/main --head=HEAD"
   },
   "dependencies": {

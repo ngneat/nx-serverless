@@ -6,6 +6,10 @@ on:
   push:
     branches: [ main ]
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 jobs:
   lint_test_deploy:
     runs-on: ubuntu-latest
@@ -30,23 +34,19 @@ jobs:
       - name: test
         run:  npm run test:affected
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
       - name: deploy to staging
-        if: contains(github.ref, 'stg')
+        if: contains(github.head_ref , 'stg')
         env:
           NODE_ENV: stg
         run:  npm run deploy:affected
 
       - name: deploy to prod
-        if: contains(github.ref, 'prod')
+        if: contains(github.head_ref , 'prod')
         env:
           NODE_ENV: prod
         run:  npm run deploy:affected  
+
+
 
 
 
