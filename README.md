@@ -154,15 +154,17 @@ GitHub Actions makes it easy to automate all your software workflows. Build, tes
 The pipeline has been configured to run everytime a push/pull_request is made to the main branch
 
 ### Steps
+For the workflow to work you have to uncomment it.
+
 - Checkout: The `checkout` action is used to checkout the source code.
 
 - Node setup: The `setup-node` action is used to optionally download and cache distribution of the requested Node.js version.
 
 - lint and test: The `lint` and `test` runs only on affected projects.
 
-- Configure AWS credentials: The `configure-aws-credentials` Configure AWS credential and region environment variables for use in github Actions. The credentials needed are AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.
+- Configure AWS credentials: The credentials needed are AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and should be set as github secrets.
 
-- Deploy to staging/prod: The `staging` and `prod` runs only when the branch name is prefixed with the name of the environment and deploy to the right environment.
+- Deploy to staging/prod: The `prod` runs only when the branch name is prefixed with the name of the environment and deploy to the right environment while `staging` runs when the branch name is prefixed with `stg`.
 
 ## Further help
 

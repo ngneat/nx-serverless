@@ -1,52 +1,47 @@
-name: Lint,Test,Deploy
+#name: Lint,Test,Deploy
 
-on:
-  pull_request:
-    branches: [ main ]
-  push:
-    branches: [ main ]
+#on:
+#  pull_request:
+#    branches: [ main ]
+#  push:
+#    branches: [ main ]
 
-env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#env:
+#  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-jobs:
-  lint_test_deploy:
-    runs-on: ubuntu-latest
+#jobs:
+#  lint_test_deploy:
+#    runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+#    steps:
+#      - name: Checkout repo
+#        uses: actions/checkout@v3
+#        with:
+#          fetch-depth: 0
 
-      - name: Node setup
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'npm'
-      - name: install dependencies
-        run: npm ci
+#      - name: Node setup
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: 16
+#          cache: 'npm'
+#      - name: install dependencies
+#        run: npm ci
 
-      - name: lint
-        run: npm run lint:affected
+#      - name: lint
+#        run: npm run lint:affected
 
-      - name: test
-        run:  npm run test:affected
+#      - name: test
+#        run:  npm run test:affected
 
-      - name: deploy to staging
-        if: contains(github.head_ref , 'stg')
-        env:
-          NODE_ENV: stg
-        run:  npm run deploy:affected
+#      - name: deploy to staging
+#        if: contains(github.head_ref , 'stg')
+#        env:
+#          NODE_ENV: stg
+#        run:  npm run deploy:affected
 
-      - name: deploy to prod
-        if: contains(github.head_ref , 'prod')
-        env:
-          NODE_ENV: prod
-        run:  npm run deploy:affected  
-
-
-
-
-
+#      - name: deploy to prod
+#        if: contains(github.head_ref , 'prod')
+#        env:
+#          NODE_ENV: prod
+#        run:  npm run deploy:affected  
