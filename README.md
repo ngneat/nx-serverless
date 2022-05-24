@@ -19,6 +19,7 @@
 ✅ &nbsp;Localstack<br>
 ✅ &nbsp;ESLint<br>
 ✅ &nbsp;Jest
+✅ &nbsp;Github Actions<br>
 
 <hr />
 
@@ -143,18 +144,14 @@ npx nx workspace-generator model --name=tag --project=tags
 
 <img src="demo.gif">
 
-## CI/CD pipeline with github actions
-### Github actions? 
-GitHub Actions makes it easy to automate all your software workflows. Build, test, and deploy your code right from GitHub. Make code reviews, branch management,and run workflows when other events happen in your repository
+<hr />
+<br>
 
-### Getting started with github actions
+## CI/CD pipeline with Github Actions
 
-[https://docs.github.com/actions](https://docs.github.com/actions)
+The pipeline has been configured to run everytime a push/pull_request is made to the `main` branch. You should uncomment the `ci.yml` workflow.
 
-The pipeline has been configured to run everytime a push/pull_request is made to the main branch
-
-### Steps
-For the workflow to work you have to uncomment it.
+#### Workflow Steps
 
 - Checkout: The `checkout` action is used to checkout the source code.
 
@@ -162,9 +159,13 @@ For the workflow to work you have to uncomment it.
 
 - lint and test: The `lint` and `test` runs only on affected projects.
 
-- Configure AWS credentials: The credentials needed are AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and should be set as github secrets.
+- Configure AWS credentials: The credentials needed are `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` and should be set as Github __secrets__.
 
-- Deploy to staging/prod: The `prod` runs only when the branch name is prefixed with the name of the environment and deploy to the right environment while `staging` runs when the branch name is prefixed with `stg`.
+- Each branch should be prefixed with the `environment` name. For example, if we have a `stg-feature-name` branch and open a pull request to the `main` branch, it will set `NODE_ENV` to `stg` and deploy to this environment. 
+
+By merging the pull request to the `main` branch, `NODE_ENV` is set to `prod`, and the deployment is done to production.
+
+The workflow file can have as many environments as you need.
 
 ## Further help
 
