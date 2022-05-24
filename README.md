@@ -145,7 +145,6 @@ npx nx workspace-generator model --name=tag --project=tags
 <img src="demo.gif">
 
 <hr />
-<br>
 
 ## CI/CD pipeline with Github Actions
 
