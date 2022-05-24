@@ -18,8 +18,8 @@
 ✅ &nbsp;Auto Generators<br>
 ✅ &nbsp;Localstack<br>
 ✅ &nbsp;ESLint<br>
-✅ &nbsp;Jest
-✅ &nbsp;Github Actions<br>
+✅ &nbsp;Jest<br>
+✅ &nbsp;Github Actions
 
 <hr />
 
