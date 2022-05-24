@@ -146,7 +146,7 @@ npx nx workspace-generator model --name=tag --project=tags
 
 <hr />
 
-## CI/CD pipeline with Github Actions
+## CI/CD Pipeline with Github Actions
 
 The pipeline has been configured to run everytime a push/pull_request is made to the `main` branch. You should uncomment the `ci.yml` workflow.
 
