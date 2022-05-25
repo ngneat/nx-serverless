@@ -1,7 +1,7 @@
 import type { Serverless } from 'serverless/aws';
 import { baseServerlessConfig } from '../../serverless.base';
 
-const serverlessConfig = <Serverless>{
+const serverlessConfig: Serverless = {
   ...baseServerlessConfig,
   service: '<%= name %>',
   custom: {

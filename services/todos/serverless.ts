@@ -2,7 +2,7 @@ import { tableResource } from '../../environments/environment.serverless';
 import type { Serverless } from 'serverless/aws';
 import { baseServerlessConfig } from '../../serverless.base';
 
-const serverlessConfig = <Serverless>{
+const serverlessConfig: Serverless = {
   ...baseServerlessConfig,
   service: `todos`,
   provider: {
