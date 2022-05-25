@@ -2,7 +2,7 @@ import { env } from '../../environments/environment.serverless';
 import type { Serverless } from 'serverless/aws';
 import { baseServerlessConfigProvider } from '../../serverless.base';
 
-const serverlessConfig: Serverless = {
+const serverlessConfig: Partial<Serverless> = {
   provider: baseServerlessConfigProvider,
   plugins: ['serverless-localstack'],
   service: 'core',

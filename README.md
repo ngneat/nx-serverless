@@ -130,16 +130,16 @@ nx affected:deploy
 
 ```bash
 // Generate a service
-npx nx workspace-generator service tags
+yarn g:service tags
 
 // Generate handler
-npx nx workspace-generator handler --name=create-tag --project=tags
+yarn g:handler handler-name
 
 // Generate http handler
-npx nx workspace-generator http-handler --name=create-tag --project=tags
+yarn g:http-handler create-tag
 
 // Generate a model
-npx nx workspace-generator model --name=tag --project=tags
+yarn g:model tag
 ```
 
 <img src="demo.gif">

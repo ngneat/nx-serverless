@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "nx": "nx",
-    "localstack": "docker-compose up ",
+    "localstack": "docker-compose up",
     "build": "nx build",
     "serve": "nx run-many --target=serve --all",
     "test": "nx run-many --target=test --all",
@@ -16,7 +16,11 @@
     "workspace-generator": "nx workspace-generator",
     "test:affected": "nx affected:test --base=origin/main --head=HEAD",
     "deploy:affected": "nx affected --target=deploy --all",
-    "lint:affected": "nx affected:lint --base=origin/main --head=HEAD"
+    "lint:affected": "nx affected:lint --base=origin/main --head=HEAD",
+    "g:http-handler": " npx nx workspace-generator http-handler",
+    "g:handler": " npx nx workspace-generator handler",
+    "g:service": " npx nx workspace-generator service",
+    "g:model": " npx nx workspace-generator model"
   },
   "dependencies": {
     "@aws-sdk/util-dynamodb": "3.80.0",
@@ -24,11 +28,12 @@
     "@middy/http-json-body-parser": "2.5.7",
     "jsonwebtoken": "8.5.1",
     "middy": "0.36.0",
-    "tslib": "2.0.0",
     "ulid": "2.3.0",
-    "yup": "0.32.11"
+    "yup": "0.32.11",
+    "tslib": "2.0.0"
   },
   "devDependencies": {
+    "ts-morph": "15.0.0",
     "@aws-sdk/types": "3.55.0",
     "@jest/transform": "27.5.1",
     "@nrwl/cli": "14.1.2",
