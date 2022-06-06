@@ -42,7 +42,8 @@
 
 - Run git clone https://github.com/ngneat/nx-serverless.git your-app-name
 - Run `npm install`
-- Run `npm run localstack`
+- Run `npm run localstack` ( Check that it works by going to http://localhost:4566/health)
+- Run `npx nx deploy core --stage local` to create the table
 - Update the `environment` files based on your configuration
 - Run `npm run serve`
 
