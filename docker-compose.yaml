@@ -12,6 +12,7 @@ services:
       - AWS_DEFAULT_REGION=eu-west-1
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
+      - SERVICES=s3
     volumes:
       - '/private/tmp/localstack:/tmp/localstack'
       - '/var/run/docker.sock:/var/run/docker.sock'
