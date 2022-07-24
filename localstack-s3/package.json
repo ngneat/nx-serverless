@@ -1,0 +1,14 @@
+{
+  "name": "localstack-s3",
+  "version": "1.0.0",
+  "description": "upload to s3",
+  "main": "upload.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1181.0"
+  }
+}
