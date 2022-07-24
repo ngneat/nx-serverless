@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-// const fs = require('fs')
+const fs = require('fs')
 
 const KEY_ID = "nxserverless"
 const SECRET_KEY = "nxserverless"
@@ -18,6 +18,7 @@ const params = {
   Bucket: BUCKET_NAME
 }
 
+// To create an s3 bucket 
 s3.createBucket(params,(err, data)=>{
   if(err){
     console.log(err)
@@ -27,24 +28,25 @@ s3.createBucket(params,(err, data)=>{
   }
 })
 
-// const uploadFile = (filename) => {
-//   const filecontent = fs.readFileSync(filename);
+// To upload a file to s3 bucket 
+const uploadFile = (filename) => {
+  const filecontent = fs.readFileSync(filename);
 
-//   const params = {
-//     Bucket: BUCKET_NAME,
-//     Key: "",
-//     Body: filecontent,
-//     ContentType: ""
-//   }
+  const params = {
+    Bucket: BUCKET_NAME,
+    Key: "",
+    Body: filecontent,
+    ContentType: ""
+  }
 
-//   s3.upload(params,(err, data)=>{
-//     if(err){
-//       console.log(err)
-//     }
-//     else{
-//       console.log("File uploaded successfully", data.Location)
-//     }
-//   })
-// }
+  s3.upload(params,(err, data)=>{
+    if(err){
+      console.log(err)
+    }
+    else{
+      console.log("File uploaded successfully", data.Location)
+    }
+  })
+}
 
-// uploadFile("")
+uploadFile("")
