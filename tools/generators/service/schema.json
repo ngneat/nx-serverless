@@ -6,11 +6,14 @@
     "name": {
       "type": "string",
       "description": "Service name",
+      "x-prompt": "What is the name of the service?",
       "$default": {
         "$source": "argv",
         "index": 0
       }
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

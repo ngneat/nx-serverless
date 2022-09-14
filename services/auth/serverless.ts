@@ -2,7 +2,7 @@ import type { Serverless } from 'serverless/aws';
 import { baseServerlessConfig } from '../../serverless.base';
 import { tableResource } from '../../environments/environment.serverless';
 
-const serverlessConfig = <Serverless>{
+const serverlessConfig: Partial<Serverless> = {
   ...baseServerlessConfig,
   service: 'auth',
   provider: {

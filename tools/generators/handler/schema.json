@@ -6,15 +6,21 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Handler name"
+      "description": "Handler name",
+      "x-prompt": "What is the name of the handler?",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
     },
     "project": {
       "type": "string",
       "description": "Project name",
-      "$default": {
-        "$source": "projectName"
-      }
+      "x-prompt": "What is the name of the project?"
     }
   },
-  "required": ["name", "project"]
+  "required": [
+    "name",
+    "project"
+  ]
 }

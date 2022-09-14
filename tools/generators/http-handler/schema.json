@@ -6,15 +6,76 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Handler name"
+      "description": "Handler name",
+      "x-prompt": "What is the name of the handler?",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
     },
     "project": {
       "type": "string",
       "description": "Project name",
-      "$default": {
-        "$source": "projectName"
+      "x-prompt": "What is the name of the project?"
+    },
+    "method": {
+      "description": "The HTTP method",
+      "type": "string",
+      "default": "GET",
+      "enum": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ],
+      "x-prompt": {
+        "message": "Which HTTP method you want to use?",
+        "type": "list",
+        "items": [
+          {
+            "value": "GET",
+            "label": "GET"
+          },
+          {
+            "value": "POST",
+            "label": "POST"
+          },
+          {
+            "value": "PUT",
+            "label": "PUT"
+          },
+          {
+            "value": "DELETE",
+            "label": "DELETE"
+          },
+          {
+            "value": "PATCH",
+            "label": "PATCH"
+          },
+          {
+            "value": "HEAD",
+            "label": "HEAD"
+          },
+          {
+            "value": "OPTIONS",
+            "label": "OPTIONS"
+          }
+        ]
       }
+    },
+    "path": {
+      "type": "string",
+      "description": "Path of the handler",
+      "x-prompt": "What is the handler path?"
     }
   },
-  "required": ["name", "project"]
+  "required": [
+    "name",
+    "project",
+    "path",
+    "method"
+  ]
 }

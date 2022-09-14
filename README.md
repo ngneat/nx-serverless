@@ -18,7 +18,8 @@
 ✅ &nbsp;Auto Generators<br>
 ✅ &nbsp;Localstack<br>
 ✅ &nbsp;ESLint<br>
-✅ &nbsp;Jest
+✅ &nbsp;Jest<br>
+✅ &nbsp;Github Actions
 
 <hr />
 
@@ -41,7 +42,8 @@
 
 - Run git clone https://github.com/ngneat/nx-serverless.git your-app-name
 - Run `npm install`
-- Run `npm run localstack`
+- Run `npm run localstack` ( Check that it works by going to http://localhost:4566/health)
+- Run `npx nx deploy core --stage local` to create the table
 - Update the `environment` files based on your configuration
 - Run `npm run serve`
 
@@ -129,32 +131,27 @@ nx affected:deploy
 
 ```bash
 // Generate a service
-npx nx workspace-generator service tags
+yarn g:service tags
 
 // Generate handler
-npx nx workspace-generator handler --name=create-tag --project=tags
+yarn g:handler handler-name
 
 // Generate http handler
-npx nx workspace-generator http-handler --name=create-tag --project=tags
+yarn g:http-handler create-tag
 
 // Generate a model
-npx nx workspace-generator model --name=tag --project=tags
+yarn g:model tag
 ```
 
 <img src="demo.gif">
 
-## CI/CD pipeline with github actions
-### Github actions? 
-GitHub Actions makes it easy to automate all your software workflows. Build, test, and deploy your code right from GitHub. Make code reviews, branch management,and run workflows when other events happen in your repository
+<hr />
 
-### Getting started with github actions
+## CI/CD Pipeline with Github Actions
 
-[https://docs.github.com/actions](https://docs.github.com/actions)
+The pipeline has been configured to run everytime a push/pull_request is made to the `main` branch. You should uncomment the `ci.yml` workflow.
 
-The pipeline has been configured to run everytime a push/pull_request is made to the main branch
-
-### Steps
-For the workflow to work you have to uncomment it.
+#### Workflow Steps
 
 - Checkout: The `checkout` action is used to checkout the source code.
 
@@ -162,9 +159,13 @@ For the workflow to work you have to uncomment it.
 
 - lint and test: The `lint` and `test` runs only on affected projects.
 
-- Configure AWS credentials: The credentials needed are AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and should be set as github secrets.
+- Configure AWS credentials: The credentials needed are `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` and should be set as Github __secrets__.
 
-- Deploy to staging/prod: The `prod` runs only when the branch name is prefixed with the name of the environment and deploy to the right environment while `staging` runs when the branch name is prefixed with `stg`.
+- Each branch should be prefixed with the `environment` name. For example, if we have a `stg-feature-name` branch and open a pull request to the `main` branch, it will set `NODE_ENV` to `stg` and deploy to this environment. 
+
+By merging the pull request to the `main` branch, `NODE_ENV` is set to `prod`, and the deployment is done to production.
+
+The workflow file can have as many environments as you need.
 
 ## Further help
 

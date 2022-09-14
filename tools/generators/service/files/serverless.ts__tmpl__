@@ -1,7 +1,7 @@
 import type { Serverless } from 'serverless/aws';
 import { baseServerlessConfig } from '../../serverless.base';
 
-const serverlessConfig = <Serverless>{
+const serverlessConfig: Partial<Serverless> = {
   ...baseServerlessConfig,
   service: '<%= name %>',
   custom: {
@@ -11,20 +11,7 @@ const serverlessConfig = <Serverless>{
       httpPort: 3006,
     },
   },
-  functions: {
-    'get-<%= fileName %>': {
-      handler: 'src/get-<%= fileName %>/get-<%= fileName %>-handler.main',
-      events: [
-        {
-          http: {
-            method: 'get',
-            path: '<%= name %>',
-          },
-        },
-      ],
-    },
-  },
+  functions: {},
 }
 
 module.exports = serverlessConfig;
-
